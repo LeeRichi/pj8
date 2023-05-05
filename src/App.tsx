@@ -9,22 +9,22 @@ import { GridCellParams } from '@mui/x-data-grid';
 
 import Avatar from '@mui/material/Avatar';
 
-
-interface Brewery
-{
+//interface, later move to other file
+interface Brewery {
   id: number;
   name: string;
   brewery_type: string;
+  street: string;
   city: string;
   state: string;
+  postal_code: string;
+  country: string;
+  longitude: string;
+  latitude: string;
+  phone: string;
+  website_url: string;
+  avatarColor: string; 
 }
-
-const useStyles = makeStyles({
-  header: {
-    backgroundColor: '#bbbbbb',
-    color: 'white',
-  },
-});
 
 
 const App = () =>
@@ -43,6 +43,24 @@ const App = () =>
     fetchData();
   }, []);
 
+  function getRandomColor() {
+    const letters = "0123456789ABCDEF";
+    let color = "#";
+    for (let i = 0; i < 6; i++) {
+      color += letters[Math.floor(Math.random() * 16)];
+    }
+    return color;
+  }
+
+  const updatedData = data.map(row => {
+    return {
+      ...row,
+      avatarColor: getRandomColor(),
+    }
+  })
+
+  console.log(updatedData)
+
 
   const columns: GridColDef[] = [
   {
@@ -50,7 +68,7 @@ const App = () =>
     headerName: '',
     width: 100,
     renderCell: (params: GridCellParams) => (
-      <Avatar style={{ backgroundColor: params.row.color }}>{params.row.id.charAt(0)}</Avatar>
+      <Avatar style={{ backgroundColor: params.row.avatarColor }}>{params.row.id.charAt(0)}</Avatar>
     ),
     headerClassName: 'super-app-theme--header'
   },
@@ -68,7 +86,7 @@ const App = () =>
     <div style={{ display: 'flex', justifyContent: 'center' , height: '100vh', marginTop: '10vh' }}>
       <Box sx={{ height: 600, width: '75%' }}>
         <DataGrid
-          rows={data}
+          rows={updatedData}
           columns={columns}
           initialState={{
             pagination: {
