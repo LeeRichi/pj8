@@ -37,5 +37,7 @@ deploy url: https://pj8.netlify.app/
 │   ├── index.tsx
 │   ├── interface.tsx
 │   ├── react-app-env.d.ts
-│   ├── reportWebVital
+│   ├── reportWebVitals.ts
+│   └── setupTests.ts
+└── tsconfig.json
 ````
