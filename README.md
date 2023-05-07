@@ -20,10 +20,22 @@ deploy url: https://pj8.netlify.app/
 ## Sturcture
 ````
 .
-├── README.md
-├── package.json
-├── src
+├── public
+│   ├── favicon.ico
 │   ├── index.html
-│   └── index.ts
-└── tsconfig.json
+│   ├── logo192.png
+│   ├── logo512.png
+│   ├── manifest.json
+│   └── robots.txt
+├── src
+│   ├── App.tsx
+│   ├── components
+│   │   ├── Detail.tsx
+│   │   ├── Home.tsx
+│   │   └── SearchBar.tsx
+│   ├── index.css
+│   ├── index.tsx
+│   ├── interface.tsx
+│   ├── react-app-env.d.ts
+│   ├── reportWebVital
 ````
