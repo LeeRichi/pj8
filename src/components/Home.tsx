@@ -6,7 +6,7 @@ import { DataGrid, GridColDef, GridValueGetterParams, GridRowParams } from '@mui
 import { GridCellParams } from '@mui/x-data-grid';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
-import Brewery from './interface'
+import Brewery from '../interface'
 import {SearchBar} from './SearchBar'
 import { useNavigate } from 'react-router-dom';
 

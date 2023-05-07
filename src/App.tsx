@@ -3,8 +3,8 @@ import axios from 'axios'
 
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
-import Home from './Home';
-import Detail from './Detail';
+import Home from './components/Home';
+import Detail from './components/Detail';
 import Brewery from './interface'
 
 const App = () =>
@@ -40,21 +40,6 @@ const App = () =>
     }
   }, [searchText]);
 
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get<Brewery[]>('https://api.openbrewerydb.org/v1/breweries');
-  //       getData(response.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
-  // console.log(selectedRowId)
-
-
   return (
     <Router>
       <Routes>
@@ -62,7 +47,6 @@ const App = () =>
         <Route path={`/${selectedRowId}`} element={<Detail selectedRowId={selectedRowId} />} />
       </Routes>
     </Router>
-       
   )
 }
 

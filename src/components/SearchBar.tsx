@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useEffect, useState } from 'react';
 import { TextField } from '@mui/material';
 import SearchIcon from '@mui/icons-material/Search';
 import IconButton from '@material-ui/core/IconButton';
@@ -23,11 +23,8 @@ export function SearchBar({ searchText, setSearchText }: SearchBarProps)
         const inputElement = document.getElementById('search-field') as HTMLInputElement;
         console.log(inputElement.value);
         setSearchText(inputElement.value);
-        // setSearchText('')
     };
-
-    
-
+  
   return (
     <form onSubmit={handleSearchSubmit}>
       <TextField
@@ -39,14 +36,10 @@ export function SearchBar({ searchText, setSearchText }: SearchBarProps)
         onChange={handleSearchInputChange}
         InputProps={{
             endAdornment: (
-            // <InputAdornment position="end">
-            //     <IconButton type="submit" aria-label="search">
-                    <SearchIcon />
-            //     </IconButton>
-            // </InputAdornment>
+              <SearchIcon />
             ),
         }}
-          />
+      />
     </form>
   );
 }

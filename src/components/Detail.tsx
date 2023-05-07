@@ -1,14 +1,11 @@
 import React, {useState, useEffect} from 'react'
-import Brewery from './interface'
+import Brewery from '../interface'
 import axios from 'axios'
 import { Box, List, ListItem, ListItemText } from "@mui/material";
-
-
 
 interface DetailPageProps {
   selectedRowId: number | null;
 }
-
 
 export default function Detail(selectedRowId: DetailPageProps): JSX.Element
 {
@@ -44,7 +41,6 @@ export default function Detail(selectedRowId: DetailPageProps): JSX.Element
   fetchData();
   }, [selectedRowId]);
 
-
   const renderMap = () => {
     if (detail && detail.latitude && detail.longitude) {
       return (
@@ -65,8 +61,6 @@ export default function Detail(selectedRowId: DetailPageProps): JSX.Element
       return null;
     }
   };
-
-
   return (
     <div>
       {detail && (
@@ -109,5 +103,4 @@ export default function Detail(selectedRowId: DetailPageProps): JSX.Element
       )}
     </div>
   );
-
 };
