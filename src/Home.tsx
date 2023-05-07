@@ -1,7 +1,5 @@
 import React, { useState, useEffect, useMemo } from 'react'
 import { Dispatch, SetStateAction } from 'react';
-
-import axios from 'axios'
 import Box from '@mui/material/Box';
 import { makeStyles } from '@mui/styles';
 import { DataGrid, GridColDef, GridValueGetterParams, GridRowParams } from '@mui/x-data-grid';
@@ -9,12 +7,8 @@ import { GridCellParams } from '@mui/x-data-grid';
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Brewery from './interface'
-
 import {SearchBar} from './SearchBar'
-
-
 import { useNavigate } from 'react-router-dom';
-
 
 interface HomeProps {
   data: Brewery[];
@@ -29,8 +23,6 @@ const Home = (
   { data, selectedRowId, setSelectedRowId, searchText, setSearchText }: HomeProps
 ) =>
 {
-  console.log(searchText)
-
   const navigate = useNavigate();
 
   const updatedData = useMemo(() => {
@@ -50,25 +42,6 @@ const Home = (
       }
     })
   }, [data]);
-
-
-  // function getRandomColor() {
-  //   const letters = "0123456789ABCDEF";
-  //   let color = "#";
-  //   for (let i = 0; i < 6; i++) {
-  //     color += letters[Math.floor(Math.random() * 16)];
-  //   }
-  //   return color;
-  // }
-  
-  
-  // const updatedData = data.map(row => {
-  //   return {
-  //     ...row,
-  //     avatarColor: getRandomColor(),
-  //   }
-  // })
-
 
   const columns: GridColDef[] = [
   {

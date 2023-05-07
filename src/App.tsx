@@ -3,7 +3,6 @@ import axios from 'axios'
 
 import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 
-import { useParams } from 'react-router-dom';
 import Home from './Home';
 import Detail from './Detail';
 import Brewery from './interface'

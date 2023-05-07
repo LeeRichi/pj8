@@ -1,26 +1,29 @@
-# Breweries App
+## Key Concepts
+1. To use TypeScript to fetch data from a 3rd party service(https://www.openbrewerydb.org/documentation#metadata) and display by MUI.
+2. Implement the searchbar to filter the name of the companies.
+3. Fetch companies details by clicking the table rows.
 
-Fetch, display, and search for brewery companies from the given API endpoint, using React and TypeScript
+## Tech Stack
+1. typescript
+2. Material UI
 
-## Requirements
+## Result
+deploy url: https://pj8.netlify.app/
 
-1. Check the documentation at [https://www.openbrewerydb.org/documentation](https://www.openbrewerydb.org/documentation) Fetch and display information of all the companies.
 
-2. Have proper display and routing that user can switch to/back from specific company's detailed page
+## Instructure
+1. clone the app: https://github.com/LeeRichi/fs15_8-breweries-app.git
+2. Run 'npm i --legacy-peer-deps' in root folder in terminal.
+3. In root folder, run script 'npm start'.
 
-3. Create search component to enable user to input text and search for companies by name.
 
-4. Use MaterialUI to make your design more appealing and responsive
-
-5. Implement performance optimization where applicable
-
-6. Deploy your application and rewrite README file
-
-## Optional
-
-7. Use the queries listed in the documentation to sort and limit the returned data and build pagination feature.
-
-8. Create a contact form so that user can send question along with their contact information. 
-
-9. Use Google-login option to pre-fill the contact form for user.
-# pj8
+## Sturcture
+````
+.
+├── README.md
+├── package.json
+├── src
+│   ├── index.html
+│   └── index.ts
+└── tsconfig.json
+````
