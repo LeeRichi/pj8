@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react'
+import React, { useState, useEffect, useMemo } from 'react'
 import { Dispatch, SetStateAction } from 'react';
 
 import axios from 'axios'
@@ -10,6 +10,9 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Avatar from '@mui/material/Avatar';
 import Brewery from './interface'
 
+import {SearchBar} from './SearchBar'
+
+
 import { useNavigate } from 'react-router-dom';
 
 
@@ -17,55 +20,54 @@ interface HomeProps {
   data: Brewery[];
   selectedRowId: number | null;
   setSelectedRowId: Dispatch<SetStateAction<number | null>>;
+
+  searchText: string | null;
+  setSearchText: Dispatch<SetStateAction<string | null>>;
 }
 
-// interface HomeProps {
-//   selectedRowId: number | null;
-//   setSelectedRowId: (id: number | null) => void;
-// }
-
 const Home = (
-  // { data }: { data: Brewery[] },
-  // { selectedRowId, setSelectedRowId }: HomeProps
-  { data, selectedRowId, setSelectedRowId }: HomeProps
+  { data, selectedRowId, setSelectedRowId, searchText, setSearchText }: HomeProps
 ) =>
 {
-  // const [data, getData] = useState<Brewery[]>([]);
-  
-  // const [selectedRowId, setSelectedRowId] = useState<number | null>(null);
-
-  //fetch dat
-  // useEffect(() => {
-  //   const fetchData = async () => {
-  //     try {
-  //       const response = await axios.get<Brewery[]>('https://api.openbrewerydb.org/v1/breweries');
-  //       getData(response.data);
-  //     } catch (error) {
-  //       console.log(error);
-  //     }
-  //   };
-  //   fetchData();
-  // }, []);
-
+  console.log(searchText)
 
   const navigate = useNavigate();
 
-
-  function getRandomColor() {
-    const letters = "0123456789ABCDEF";
-    let color = "#";
-    for (let i = 0; i < 6; i++) {
-      color += letters[Math.floor(Math.random() * 16)];
+  const updatedData = useMemo(() => {
+    function getRandomColor() {
+      const letters = "0123456789ABCDEF";
+      let color = "#";
+      for (let i = 0; i < 6; i++) {
+        color += letters[Math.floor(Math.random() * 16)];
+      }
+      return color;
     }
-    return color;
-  }
 
-  const updatedData = data.map(row => {
-    return {
-      ...row,
-      avatarColor: getRandomColor(),
-    }
-  })
+    return data.map(row => {
+      return {
+        ...row,
+        avatarColor: getRandomColor(),
+      }
+    })
+  }, [data]);
+
+
+  // function getRandomColor() {
+  //   const letters = "0123456789ABCDEF";
+  //   let color = "#";
+  //   for (let i = 0; i < 6; i++) {
+  //     color += letters[Math.floor(Math.random() * 16)];
+  //   }
+  //   return color;
+  // }
+  
+  
+  // const updatedData = data.map(row => {
+  //   return {
+  //     ...row,
+  //     avatarColor: getRandomColor(),
+  //   }
+  // })
 
 
   const columns: GridColDef[] = [
@@ -92,13 +94,12 @@ const Home = (
     const id = params.row.id;
     navigate(`/${id}`);
     setSelectedRowId(id)
-    // console.log(selectedRowId)
   }
-
 
   return (
     <div style={{ display: 'flex', justifyContent: 'center' , height: '100vh', marginTop: '10vh' }}>
       <Box sx={{ height: 600, width: '75%' }}>
+        <SearchBar searchText={searchText} setSearchText={setSearchText} />
         <DataGrid
           rows={updatedData}
           columns={columns}
@@ -111,13 +112,8 @@ const Home = (
             },
           }}
           pageSizeOptions={[10]}
-          // checkboxSelection
-          // disableRowSelectionOnClick
         />
       </Box>
-      {/* <Route path={`/${selectedRowId}`}>
-        <DetailPage updatedData={updatedData}  />
-      </Route> */}
     </div>
   )
 }

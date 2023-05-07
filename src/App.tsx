@@ -12,19 +12,46 @@ const App = () =>
 {
   const [data, getData] = useState<Brewery[]>([]);
   const [selectedRowId, setSelectedRowId] = useState<number | null>(null);
+  const [searchText, setSearchText] = useState<string | null>(null);
+
+  console.log(searchText + ' in app')
 
   //fetch data
   useEffect(() => {
-    const fetchData = async () => {
-      try {
-        const response = await axios.get<Brewery[]>('https://api.openbrewerydb.org/v1/breweries');
-        getData(response.data);
-      } catch (error) {
-        console.log(error);
-      }
-    };
-    fetchData();
-  }, []);
+    if (!searchText) {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get<Brewery[]>('https://api.openbrewerydb.org/v1/breweries');
+          getData(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchData();
+    } else {
+      const fetchData = async () => {
+        try {
+          const response = await axios.get<Brewery[]>(`https://api.openbrewerydb.org/v1/breweries?by_name=${searchText}`);
+          getData(response.data);
+        } catch (error) {
+          console.log(error);
+        }
+      };
+      fetchData();
+    }
+  }, [searchText]);
+
+  // useEffect(() => {
+  //   const fetchData = async () => {
+  //     try {
+  //       const response = await axios.get<Brewery[]>('https://api.openbrewerydb.org/v1/breweries');
+  //       getData(response.data);
+  //     } catch (error) {
+  //       console.log(error);
+  //     }
+  //   };
+  //   fetchData();
+  // }, []);
 
   // console.log(selectedRowId)
 
@@ -32,7 +59,7 @@ const App = () =>
   return (
     <Router>
       <Routes>
-        <Route path="/" element={<Home data={data} selectedRowId={selectedRowId} setSelectedRowId={setSelectedRowId}/>} />
+        <Route path="/" element={<Home data={data} selectedRowId={selectedRowId} setSelectedRowId={setSelectedRowId} searchText={searchText} setSearchText={setSearchText} />} />
         <Route path={`/${selectedRowId}`} element={<Detail selectedRowId={selectedRowId} />} />
       </Routes>
     </Router>

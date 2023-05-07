@@ -48,7 +48,7 @@ export default function Detail(selectedRowId: DetailPageProps): JSX.Element
   const renderMap = () => {
     if (detail && detail.latitude && detail.longitude) {
       return (
-        <div style={{ height: "400px", width: "30%" }}>
+        <div style={{ height: "450px", width: "100%" }}>
           <iframe
             title="brewery-map"
             width="100%"
