@@ -2,13 +2,9 @@ import { GoogleOAuthProvider, GoogleLogin, CredentialResponse, GoogleCredentialR
 import React, { useState } from 'react';
 import { TextField, Button, Typography, Box } from '@mui/material';
 import Navbar from './Navbar';
-// import jwt from 'jsonwebtoken';
-import { OAuth2Client } from 'google-auth-library';
 import jwt_decode from "jwt-decode";
 
-
 // require('dotenv').config();
-// const clientId: string = '544670836146-92cqn6p5s1pmnnp34lftmivds7oq2ct0.apps.googleusercontent.com';
 
 const ContactForm: React.FC = () => {
 const [user, setUser] = useState<GoogleCredentialResponse | null>(null);
@@ -56,7 +52,7 @@ console.log(email);
       <Navbar />
       <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'center', height: '100vh', marginTop:'-10vh' }}>
         <form onSubmit={handleSubmit}>
-          <GoogleOAuthProvider clientId={process.env.CLIENT_ID || '544670836146-92cqn6p5s1pmnnp34lftmivds7oq2ct0.apps.googleusercontent.com'}>
+          <GoogleOAuthProvider clientId={process.env.REACT_APP_CLIENT_ID!}>
             <GoogleLogin onSuccess={handleLoginSuccess} onError={handleLoginError} />
           </GoogleOAuthProvider> 
           <TextField label="Name" fullWidth sx={{ width: '50vw' }} margin="normal" value={name || ''}/><br />
