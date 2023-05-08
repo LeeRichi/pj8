@@ -6,6 +6,8 @@
 ## Tech Stack
 1. typescript
 2. Material UI
+3. google loggin
+4. google map inserted
 
 ## Result
 deploy url: https://pj8.netlify.app/
@@ -30,8 +32,10 @@ deploy url: https://pj8.netlify.app/
 ├── src
 │   ├── App.tsx
 │   ├── components
+│   │   ├── ContactForm.tsx
 │   │   ├── Detail.tsx
 │   │   ├── Home.tsx
+│   │   ├── Navbar.tsx
 │   │   └── SearchBar.tsx
 │   ├── index.css
 │   ├── index.tsx

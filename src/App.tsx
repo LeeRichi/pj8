@@ -15,7 +15,6 @@ const App = () =>
   const [selectedRowId, setSelectedRowId] = useState<number | null>(null);
   const [searchText, setSearchText] = useState<string | null>(null);
 
-  const googleClientId = '544670836146-92cqn6p5s1pmnnp34lftmivds7oq2ct0.apps.googleusercontent.com';
   
 
   //fetch data
