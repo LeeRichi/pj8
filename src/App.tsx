@@ -6,6 +6,8 @@ import { BrowserRouter as Router, Route, Link, Routes } from 'react-router-dom';
 import Home from './components/Home';
 import Detail from './components/Detail';
 import Brewery from './interface'
+import ContactForm from './components/ContactForm';
+
 
 const App = () =>
 {
@@ -13,7 +15,8 @@ const App = () =>
   const [selectedRowId, setSelectedRowId] = useState<number | null>(null);
   const [searchText, setSearchText] = useState<string | null>(null);
 
-  console.log(searchText + ' in app')
+  const googleClientId = '544670836146-92cqn6p5s1pmnnp34lftmivds7oq2ct0.apps.googleusercontent.com';
+  
 
   //fetch data
   useEffect(() => {
@@ -45,6 +48,7 @@ const App = () =>
       <Routes>
         <Route path="/" element={<Home data={data} selectedRowId={selectedRowId} setSelectedRowId={setSelectedRowId} searchText={searchText} setSearchText={setSearchText} />} />
         <Route path={`/${selectedRowId}`} element={<Detail selectedRowId={selectedRowId} />} />
+        <Route path="/contactform" element={<ContactForm />} />
       </Routes>
     </Router>
   )

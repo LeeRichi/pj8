@@ -9,6 +9,7 @@ import Avatar from '@mui/material/Avatar';
 import Brewery from '../interface'
 import {SearchBar} from './SearchBar'
 import { useNavigate } from 'react-router-dom';
+import Navbar from './Navbar'
 
 interface HomeProps {
   data: Brewery[];
@@ -70,24 +71,27 @@ const Home = (
   }
 
   return (
-    <div style={{ display: 'flex', justifyContent: 'center' , height: '100vh', marginTop: '10vh' }}>
-      <Box sx={{ height: 600, width: '75%' }}>
-        <SearchBar searchText={searchText} setSearchText={setSearchText} />
-        <DataGrid
-          rows={updatedData}
-          columns={columns}
-          onRowClick={handleRowClick}
-          initialState={{
-            pagination: {
-              paginationModel: {
-                pageSize: 10,
+    <>
+      <Navbar />
+      <div style={{ display: 'flex', justifyContent: 'center' , height: '100vh', marginTop: '10vh' }}>
+        <Box sx={{ height: 600, width: '75%' }}>
+          <SearchBar searchText={searchText} setSearchText={setSearchText} />
+          <DataGrid
+            rows={updatedData}
+            columns={columns}
+            onRowClick={handleRowClick}
+            initialState={{
+              pagination: {
+                paginationModel: {
+                  pageSize: 10,
+                },
               },
-            },
-          }}
-          pageSizeOptions={[10]}
-        />
-      </Box>
-    </div>
+            }}
+            pageSizeOptions={[10]}
+          />
+        </Box>
+      </div>
+    </>
   )
 }
 
