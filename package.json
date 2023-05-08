@@ -19,6 +19,9 @@
     "@types/react": "^18.0.33",
     "@types/react-dom": "^18.0.11",
     "axios": "^1.4.0",
+    "google-auth-library": "^8.8.0",
+    "jsonwebtoken": "^9.0.0",
+    "jwt-decode": "^3.1.2",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
     "react-google-login": "^5.2.2",
@@ -54,6 +57,8 @@
     ]
   },
   "devDependencies": {
-    "@types/react-router": "^5.1.20"
+    "@types/jsonwebtoken": "^9.0.2",
+    "@types/react-router": "^5.1.20",
+    "dotenv": "^16.0.3"
   }
 }
